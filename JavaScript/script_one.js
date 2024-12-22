@@ -232,4 +232,9 @@ async function main() {
 }
 
 //Calling Main function
-main();
+//main();
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  main();
+});
