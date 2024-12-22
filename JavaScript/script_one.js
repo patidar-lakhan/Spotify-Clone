@@ -22,7 +22,9 @@ async function getSongs(folder) {
   //fetching songs using URL
   currFolder = folder;
   a = await fetch(`/${folder}/`);
+  console.log(a)
   let response = await a.text();
+  console.log(response);
   //Extracting songs from the response
   let div = document.createElement("div");
   div.innerHTML = response;
@@ -102,6 +104,7 @@ const playMusic = (track, pause = false) => {
 //Function to display all the albums on the page....
 async function displayAlbums() {
   let a = await fetch(`/Songs/`);
+  console.log(a);
   let response = await a.text();
   let div = document.createElement("div");
   div.innerHTML = response;
@@ -143,12 +146,12 @@ async function displayAlbums() {
 
 async function main() {
   //get the list of all the songs
-  //await getSongs("Songs/ncs");
+  await getSongs("Songs/ncs");
   playMusic(songs[0], true);
   //console.log(songs);
 
   //Display all the albums on the page....
-  displayAlbums();
+  await displayAlbums();
 
   //Listen for time update events
   currentSong.addEventListener("timeupdate", () => {
