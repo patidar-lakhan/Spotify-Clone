@@ -146,7 +146,7 @@ async function displayAlbums() {
 
 async function main() {
   //get the list of all the songs
-  await getSongs("Songs/ncs");
+  await getSongs("https://github.com/patidar-lakhan/Spotify-Clone/tree/main/Songs/ncs");
   playMusic(songs[0], true);
   //console.log(songs);
 
