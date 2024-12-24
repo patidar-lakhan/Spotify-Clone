@@ -21,7 +21,7 @@ function SecondsToMinutes(seconds) {
 async function getSongs(folder) {
   //fetching songs using URL
   currFolder = folder;
-  let a = await fetch(`/${folder}/`);
+  let a = await fetch(`${folder}/`);
   let response = await a.text();
   //console.log(response);
   //Extracting songs from the response
@@ -32,7 +32,7 @@ async function getSongs(folder) {
   for (let i = 0; i < as.length; i++) {
     const element = as[i];
     if (element.href.endsWith(".mp3")) {
-      songs.push(element.href.split(`/${folder}/`)[1]);
+      songs.push(element.href.split(`${folder}/`)[1]);
     }
   }
 
@@ -78,7 +78,7 @@ async function getSongs(folder) {
 //Function to play the selected song playmusic();
 const playMusic = (track, pause = false) => {
   //let audio = new Audio("/Songs/" + track);
-  currentSong.src = `/${currFolder}/` + track;
+  currentSong.src = `${currFolder}/` + track;
   if (!pause) {
     currentSong.play();
     played.src = "all_img/pause.svg";
@@ -101,7 +101,7 @@ const playMusic = (track, pause = false) => {
 
 //Function to display all the albums on the page....
 async function displayAlbums() {
-  let a = await fetch(`/Songs/`);
+  let a = await fetch(`Songs/`);
   //console.log(a);
   let response = await a.text();
   let div = document.createElement("div");
@@ -112,11 +112,11 @@ async function displayAlbums() {
   let array = Array.from(anchors);
   for (let i = 0; i < array.length; i++) {
     const e = array[i];
-    if (e.href.includes("/Songs/")) {
+    if (e.href.includes("Songs/")) {
       let folder = e.href.split("/").slice(-2)[1];
       //console.log(folder + " this is a folder");
       // Get the metadata of the folder
-      let a = await fetch(`/Songs/${folder}/info.json`);
+      let a = await fetch(`Songs/${folder}/info.json`);
       let response = await a.json();
       //console.log(response);
       cardContainer.innerHTML =
@@ -125,7 +125,7 @@ async function displayAlbums() {
             <div class="play">
                 <img src="all_img/play.svg" alt>
             </div>
-            <img src="/Songs/${folder}/cover.jpeg" alt="Happy-Hits">
+            <img src="Songs/${folder}/cover.jpeg" alt="Happy-Hits">
             <h2>${response.title}</h2>
             <p>${response.description}</p>
         </div>`;
