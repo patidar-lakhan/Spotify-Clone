@@ -101,7 +101,7 @@ const playMusic = (track, pause = false) => {
 
 //Function to display all the albums on the page....
 async function displayAlbums() {
-  let a = await fetch(`Spotify-Clone/Songs/`);
+  let a = await fetch(`https://patidar-lakhan.github.io/Spotify-Clone/Songs/`);
   //console.log(a);
   let response = await a.text();
   let div = document.createElement("div");
@@ -144,7 +144,7 @@ async function displayAlbums() {
 
 async function main() {
   //get the list of all the songs
-  await getSongs("Spotify-Clone/Songs/ncs");
+  await getSongs("https://patidar-lakhan.github.io/Spotify-Clone/Songs/ncs");
   playMusic(songs[0], true);
   //console.log(songs);
 
