@@ -78,7 +78,7 @@ async function getSongs(folder) {
 //Function to play the selected song playmusic();
 const playMusic = (track, pause = false) => {
   //let audio = new Audio("/Songs/" + track);
-  currentSong.src = `${currFolder}/` + track;
+  currentSong.src = `https://raw.githubusercontent.com/patidar-lakhan/Spotify-Clone/main/Songs/${currFolder}/` + track;
   if (!pause) {
     currentSong.play();
     played.src = "all_img/pause.svg";
